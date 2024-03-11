@@ -1,0 +1,11 @@
+#includ<iostream>
+using namespace std;
+int main()
+{cout<<"Towa e pyrwata";
+cout<<"programa,koqto pisha na c++.";
+cout<<"Uspeh!Chao!!\n";
+return 0;
+	
+	
+	
+}

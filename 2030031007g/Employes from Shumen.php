@@ -1,0 +1,65 @@
+<?php  session_start();?>
+<html>
+<head>
+<title>EMFROMSHU</title>
+<link href = "site.css" rel="stylesheet" type="text/css" />
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div id="main">
+<div id = "menu">
+<?php include "menu.php";?>
+</div>
+<div id = "menu2">
+<?php include "menu2.php";?>
+</div>
+<div id = "content">
+<center>
+<div id ="logB">
+  <?php include "LogButton.php"?>
+</div>
+<h2>Information about emlpoyees from Shumen</h2>
+<table border = "1">
+<tr>
+    <th>Name</th>
+	 <th>Last</th>
+	  <th>Department</th>
+	   <th>Room</th>
+</tr>
+<?php
+     include "db.php";
+	
+	$query = "SELECT employee.*
+	FROM employee
+	WHERE city = 'Шумен'
+	ORDER BY pers_id";
+	if($result = mysqli_query($link,$query))
+	{
+		
+		while($row = mysqli_fetch_assoc($result)) {
+			?>
+			<tr>
+			
+			<td><?php echo $row['first']; ?></td>
+			<td><?php echo $row['last']; ?></td>
+			<td><?php echo $row['depart_id']; ?></td>
+			<td><?php echo $row['room_id']; ?></td>
+			<td><?php echo $row['city']; ?></td>
+			</tr>
+			<?php
+		}
+	}
+	else {
+		?>
+		<tr><td colspan = '4' align = 'center'>No records</td></tr>
+		<?php
+	}
+	?>
+	
+	</table>
+	</center>
+	</div>
+	
+	</div>
+	</body>
+	</html>
